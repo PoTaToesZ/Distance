@@ -100,7 +100,7 @@ const Menu = () => {
         {label: 'Nạp nhiên liệu tiếp theo'},
     ]}
     barColor={'lightgrey'}
-    labelTextStyle={{fontFamily: 'roboto', color: '#a11',paddingBottom: 75, right: 5, fontSize: 16 }}
+    labelTextStyle={{fontFamily: 'roboto', color: 'black',paddingBottom: 75, right: 5, fontSize: 16 }}
     renderStep={({index}) => {
         if (index === 0) {
         return (
