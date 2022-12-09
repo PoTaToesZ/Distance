@@ -1,4 +1,4 @@
-import {View, Text, FlatList, StyleSheet, Dimensions,Image,MapProgress} from 'react-native';
+import { View, Text, FlatList, StyleSheet, Dimensions, Image, MapProgress } from 'react-native';
 import React from 'react';
 import {
   StepProgressBar
@@ -14,188 +14,208 @@ const Menu = () => {
     if (price == '1.000,000 đ') {
       return 2;
     }
-    if (price == '88,000 đ') {
+    if (price == '3.000,000 đ') {
+      return 2;
+    }
+    if (price == '87,000 đ') {
       return 3;
     }
   };
   renderSeparator = () => (
     <View
       style={{
-        backgroundColor: '#b2beb5',
+        backgroundColor: '#fff',
         height: 1,
         borderStartWidth: 100,
-        borderStartColor: 'white',
         
       }}
     />
   );
   const deli = [
     {
+      label: 'Nạp nhiên liệu',
       id: '1',
-      text: '',
       date: '24 thg 12',
       distance: '6 km',
-      price: '      88,000 đ',
-      ico: require('@app/assets/images/placeholder.png'),
+      price: '87,000 đ',
       image: require('@app/assets/images/odometer.png'),
     },
     {
+      label: 'Vận chuyển hàng hóa',
       id: '2',
-      text: '',
       date: '24 thg 11',
       distance: '11 km',
       price: '1.000,000 đ',
-      ico: '',
       image: require('@app/assets/images/odometer.png'),
     },
     {
+      label: 'Vận chuyển hàng hóa',
+      id: '3',
+      date: '01 thg 12',
+      distance: '8 km',
+      price: '3.000,000 đ',
+      image: require('@app/assets/images/odometer.png'),
+    },
+    {
+      label: 'Nạp nhiên liệu tiếp theo',
       id: '4',
-      text: '',
       date: '04 thg 12',
       distance: '14 km',
       price: '1 km trước',
-      ico: '',
       image: require('@app/assets/images/odometer.png'),
     },
   ];
-  const delidata = ({item,index}) => (
-    <View style={styles.bigContainer}>
-      <View style={styles.container1}>
-        <Text style={styles.textSty}>{item.text}</Text>
-        <Text style={styles.dateSty}>{item.date}</Text>
-      </View>
-      {/* <Image source={item.ico} style={styles.imgico}/>  */}
-      <View style={styles.container2}>
-      <Image source={item.image} style={styles.img}/>
-        <Text style={styles.distanceSty}>{item.distance}</Text>
-        <Text
-          style={[
-            this.changeColor(item.price) == 1 ? styles.c1 : styles.priceSty,
-            this.changeColor(item.price) == 2 ? styles.c2 : styles.priceSty,
-            this.changeColor(item.price) == 3 ? styles.c3 : styles.priceSty,
-            styles.priceSty,
-          ]}>
-          {item.price}
-        </Text>
-      </View>
-    </View>
-  );
   return (
-    <View style={{backgroundColor: '#fff', flex: 1}}>
-      <FlatList data={deli} renderItem={delidata} ItemSeparatorComponent={this.renderSeparator} keyExtractor={item => `key-${item.id}`} />
-      <View style={{bottom: 500, flex: 1}}>
-      <StepProgressBar 
-    orientation={'vertical'}
-    stepColor="lightgreen"
-    activeStep={1}
-    completedBarColor={'#FF033E'}
-    stepWidth={100}
-    stepHeight={60}
-    showLabel={true}
-    barLength={70}
-    barThickeness={6}
-    data={[
-        {label: 'Nạp nhiên liệu'},
-        {label: 'Vận chuyển hàng hóa'},
-        {label: 'Nạp nhiên liệu tiếp theo'},
-    ]}
-    barColor={'lightgrey'}
-    labelTextStyle={{fontFamily: 'roboto', color: 'black',paddingBottom: 75, right: 5, fontSize: 16 }}
-    renderStep={({index}) => {
-        if (index === 0) {
-        return (
-            <View
-            style={{
-                width: 60,
-                height: 60,
-                borderRadius: 30,
-                backgroundColor: '#FFAE42',
-                borderWidth: 5,
-                borderColor: '#FFAE42',
-            }}>
-              <FontAwesome5 name="gas-pump" size={30} color={'white'} style={{paddingLeft:13, paddingTop: 8}}/>
+    <View style={{ backgroundColor: '#fff', flexDirection: 'row', marginVertical: 20, }}>
+      <View style={{ paddingTop: 100 }}>
+        <StepProgressBar
+          orientation={'vertical'}
+          stepColor="lightgreen"
+          activeStep={2}
+          completedBarColor={'#FF033E'}
+          stepWidth={100}
+          stepHeight={60}
+          barLength={70}
+          barThickeness={6}
+          data={[
+            {},
+            {},
+            {},
+            {},
+          ]}
+          barColor={'lightgrey'}
+          labelTextStyle={{ fontFamily: 'roboto', color: 'black', fontSize: 16 }}
+          renderStep={({ index }) => {
+            if (index === 0) {
+              return (
+                <View
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 30,
+                    backgroundColor: '#FFAE42',
+                    borderWidth: 5,
+                    borderColor: '#FFAE42',
+                  }}>
+                  <FontAwesome5 name="gas-pump" size={30} color={'white'} style={{ paddingLeft: 13, paddingTop: 8 }} />
+                </View>
+              );
+            } else if (index === 1) {
+              return (
+                <View
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 30,
+                    backgroundColor: '#47D990',
+                    borderWidth: 5,
+                    borderColor: '#47D990',
+                  }}>
+                  <Feather name="package" size={30} color={'white'} style={{ paddingLeft: 11, paddingTop: 9 }} />
+                </View>
+              );
+            } else if (index === 2) {
+              return (
+                <View
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 30,
+                    backgroundColor: '#47D990',
+                    borderWidth: 5,
+                    borderColor: '#47D990',
+                  }}>
+                  <Feather name="package" size={30} color={'white'} style={{ paddingLeft: 11, paddingTop: 9 }} />
+                </View>
+              );
+            }
+            else if (index === 3) {
+              return (
+                <View
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 30,
+                    backgroundColor: 'white',
+                    borderWidth: 5,
+                    borderColor: '#FFAE42',
+                  }}>
+                  <MaterialIcons name="local-gas-station" size={30} color={'#FFAE42'} style={{ paddingLeft: 13, paddingTop: 8 }} />
+                </View>
+              );
+            }
+          }}
+        />
+      </View>
+      <View style={{ marginLeft: -80, paddingTop: 90 }}>
+        {deli.map(item => {
+          return (
+            <View style={styles.bigContainer}>
+              <View style={styles.container1}>
+                <Text style={styles.textSty}>{item.label}</Text>
+                <Text style={styles.dateSty}>{item.date}</Text>
+              </View>
+              <View style={styles.container2}>
+                <Image source={item.image} style={styles.img} />
+                <Text style={styles.distanceSty}>{item.distance}</Text>
+                <Text
+                  style={[
+                    this.changeColor(item.price) == 1 ? styles.c1 : styles.priceSty,
+                    this.changeColor(item.price) == 2 ? styles.c2 : styles.priceSty,
+                    this.changeColor(item.price) == 3 ? styles.c3 : styles.priceSty,
+                    styles.priceSty,
+                  ]}>
+                  {item.price}
+                </Text>
+              </View>
+              <View style={{height: 1, borderEndWidth: 300,margin: 10}}/>
             </View>
-        );
-        } else if (index === 1) {
-        return (
-            <View
-            style={{
-                width: 60,
-                height: 60,
-                borderRadius: 30,
-                backgroundColor: '#47D990',
-                borderWidth: 5,
-                borderColor: '#47D990',
-            }}>
-            <Feather name="package" size={30} color={'white'} style={{paddingLeft:11, paddingTop: 9}}/>
-            </View>
-        );
-        } else if (index === 2) {
-        return (
-            <View
-            style={{
-                width: 60,
-                height: 60,
-                borderRadius: 30,
-                backgroundColor: 'white',
-                borderWidth: 5,
-                borderColor: '#FFAE42',
-            }}>
-              <MaterialIcons name="local-gas-station" size={30} color={'#FFAE42'} style={{paddingLeft:13, paddingTop: 8}}/>
-            </View>
-        );
-        }
-    }}
-/></View>
+          );
+        })}
+      </View>
     </View>
   );
 };
 
 export default Menu;
 const styles = StyleSheet.create({
-  bigContainer: {flex:1},
+  bigContainer: { marginHorizontal: 20, margin: -10 },
   container1: {
+    marginHorizontal: 70,
+    marginVertical: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
-    paddingLeft: 60
   },
   container2: {
-    paddingLeft: 60,
-    padding: 20,
-    bottom: 25,
+    marginVertical: 15,
+    marginHorizontal: 70,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    paddingTop: 6
   },
-
   textSty: {
     color: 'black',
-    fontSize: 16
+    fontSize: 16,
+    top: 20
   },
   dateSty: {
-    fontSize: 16
-
+    fontSize: 16,
+    top: 20,
+    color: 'black',
+    left: 20
   },
-  c1: {color: '#FF033E',},
-  c2: {color: '#47D990'},
-  c3: {color: 'gray'},
-  img:{
-    width: 25,
-    height: 25,
-    marginLeft: 35
+  c1: { color: '#FF033E', },
+  c2: { color: '#47D990' },
+  c3: { color: 'gray' },
+  img: {
+    width: 30,
+    height: 30,
   },
-  priceSty:{
-    // paddingLeft: 230
-    fontSize: 16
+  priceSty: {
+    fontSize: 16,
   },
-  distanceSty:{
-    
-     fontSize: 16,
-     paddingRight: 140
+  distanceSty: {
+    fontSize: 16,
   },
-  imgico:{
-    width: 20,
-    height: 20
-  }
-  
 });
+
